@@ -4,6 +4,8 @@ package com.aaronnebbs.thesociallink.plum.Handler;
 import android.os.AsyncTask;
 
 import com.aaronnebbs.thesociallink.plum.Objects.User;
+import com.aaronnebbs.thesociallink.plum.Utility.Server;
+
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -22,7 +24,8 @@ public class LoginManager extends AsyncTask {
 
     private String username;
     private String password;
-    private String url = "http://81.103.180.97:8080/plumService2/webresources/entities.users/login/";
+    private String baseUrl = Server.url;
+    private String url =  baseUrl += "/entities.users/login/";
 
     public LoginManager(String username, String password){
         this.username = username;
