@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".plum.Screens.register_activity"
+    android:background="@drawable/plumload">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/editTextRegUsername"
+            android:textColor="@color/app_white"
+            android:password="false"
+            android:textAlignment="center"
+            android:hint="Enter Username"
+            android:background="@color/app_white_trans"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="82dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="5dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/editTextRegisterPassword"
+            android:textColor="@color/app_white"
+            android:hint="Enter Password"
+            android:textAlignment="center"
+            android:background="@color/app_white_trans"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/editTextRegUsername"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="5dp"
+            android:password="true" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/editTextRegConfimation"
+            android:textColor="@color/app_white"
+            android:password="true"
+            android:textAlignment="center"
+            android:hint="Confirm Password"
+            android:background="@color/app_white_trans"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/editTextRegisterPassword"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="5dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="Register"
+            android:id="@+id/buttonRegister"
+            android:background="@color/app_white_trans2"
+            android:textColor="@color/app_white"
+            android:width="200dp"
+            android:layout_below="@+id/editTextRegConfimation"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="23dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Already Have An Account?"
+            android:id="@+id/alreadyHaveAccount"
+            android:textColor="@color/app_white"
+            android:layout_below="@+id/buttonRegister"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp" />
+    </RelativeLayout>
+
+</RelativeLayout>

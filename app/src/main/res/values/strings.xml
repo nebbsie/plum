@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PLUM</string>
+    <string name="app_logo_name">PLUM</string>
+    <string name="app_logo_moto">THE SOCIAL LINK</string>
+    <string name="savedUsername"></string>
+    <string name="defualtUsername">DEFAULT</string>
+    <string name="savedPassword"></string>
+</resources>
