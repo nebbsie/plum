@@ -33,7 +33,6 @@ public class RegisterManager extends AsyncTask {
 
         }
 
-
         @SuppressWarnings("deprecation")
         protected String doInBackground(Object... args){
 

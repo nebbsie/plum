@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.GestureDetectorCompat;
 import android.view.GestureDetector;
@@ -49,7 +48,6 @@ public class splash_activity extends Activity implements Animation.AnimationList
     private Boolean flicked;
     private ScrollView sv;
     private Thread thread;
-    private Thread thread2;
     private Boolean running;
     private RelativeLayout rl;
 
@@ -58,26 +56,9 @@ public class splash_activity extends Activity implements Animation.AnimationList
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.splash_activity);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
-        if (!checkIfLoggedIn()) {
-            thread = new Thread() {
-                @Override
-                public void run() {
-                    InputMethodManager imm = (InputMethodManager) getApplication().getSystemService(Context.INPUT_METHOD_SERVICE);
-                    while (running) {
-
-                        if (imm.isAcceptingText()) {
-                            sv.scrollTo(0, sv.getBottom());
-                        }
-                    }
-                }
-            };
-
-            thread.start();
-        }
-
-        setupNotificationBar();
-
+        //Setting up booleans
         flicked = false;
         running = true;
 
@@ -90,15 +71,13 @@ public class splash_activity extends Activity implements Animation.AnimationList
         login = (Button) findViewById(R.id.buttonLogin);
         register = (TextView) findViewById(R.id.textViewNotRegistered);
         sv = (ScrollView) findViewById(R.id.scrollViewLogin);
-        rl = (RelativeLayout) findViewById(R.id.relativeLayout);
+        rl = (RelativeLayout) findViewById(R.id.relativeLayoutLogin);
 
         //Set visibility
         username.setVisibility(View.INVISIBLE);
         password.setVisibility(View.INVISIBLE);
         login.setVisibility(View.INVISIBLE);
         register.setVisibility(View.INVISIBLE);
-
-        progBar.setProgress(1000);
 
         //Set Animations
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_up);
@@ -111,34 +90,52 @@ public class splash_activity extends Activity implements Animation.AnimationList
         username.setHintTextColor(getResources().getColor(R.color.app_white_trans2));
         password.setHintTextColor(getResources().getColor(R.color.app_white_trans2));
 
-
-        //Setup screen scaling with keyboard
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-
-
+        //Setup screen for gestures
         mDetector = new GestureDetectorCompat(this, this);
         mDetector.setOnDoubleTapListener(this);
 
+        setupNotificationBar();
+        setupOnClickListeners();
+        shouldRunKeyboardListener();
+        checkIfFromRegister();
+    }
+
+    private void shouldRunKeyboardListener(){
+        if (!checkIfLoggedIn()) {
+            thread = new Thread() {
+                @Override
+                public void run() {
+                    InputMethodManager imm = (InputMethodManager) getApplication().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    while (running) {
+                        if (imm.isAcceptingText()) {
+                            sv.scrollTo(0, sv.getBottom());
+                        }
+                    }
+                }
+            };
+
+            thread.start();
+        }
+    }
+
+    private void checkIfFromRegister(){
         try {
             Intent i = getIntent();
             String reg = i.getStringExtra("reg");
 
             if (reg.isEmpty() == false) {
-                Toast.makeText(getApplicationContext(), "Called As Intent", Toast.LENGTH_SHORT).show();
                 View view = this.getCurrentFocus();
                 if (view != null) {
                     InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                 }
                 moveLogo();
-                flicked = true;
-
             }
-        } catch (RuntimeException re) {
-            System.out.println("No Intent");
-        }
+        } catch (RuntimeException re) {}
+    }
 
-        //Setup button listeners
+    private void setupOnClickListeners(){
+
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -146,61 +143,40 @@ public class splash_activity extends Activity implements Animation.AnimationList
                 Intent i = new Intent();
                 i.setClass(getApplicationContext(), register_activity.class);
                 startActivity(i);
-
             }
         });
-
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                thread2 = new Thread() {
-                    @Override
-                    public void run() {
-                        doLoginAction();
-                        thread2.interrupt();
-                    }
-                };
-
-                thread2.start();
-
-                progBar.setProgress(100);
-
+                if (checkConnection()) {
+                    login(username.getText().toString(), password.getText().toString(), false);
+                } else {
+                    final Snackbar snackbar = Snackbar
+                            .make(rl, "No Internet Connection", Snackbar.LENGTH_INDEFINITE)
+                            .setAction("Dismiss", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                }
+                            });
+                    snackbar.show();
+                }
             }
         });
-
-
     }
 
-    private void doLoginAction() {
-
-
+    private boolean checkConnection() {
+        boolean bool = false;
         CheckConnection cc = new CheckConnection();
-
         try {
-            Boolean connected = (Boolean) cc.execute().get();
-
-            if (connected) {
-                login(username.getText().toString(), password.getText().toString(), false);
-            } else {
-                final Snackbar snackbar = Snackbar.make(rl, "Cannot Connect To Server", Snackbar.LENGTH_INDEFINITE)
-                        .setAction("DISSMISS", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                progBar.setProgress(0);
-                            }
-                        });
-
-                snackbar.show();
-            }
-
+            bool = (Boolean) cc.execute().get();
+            return bool;
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-
+        return bool;
     }
 
     private boolean checkIfLoggedIn() {
@@ -226,12 +202,7 @@ public class splash_activity extends Activity implements Animation.AnimationList
                 return true;
             }
         }
-        if (autoLogin.equals("false")) {
-            System.out.println("Auto Login: FALSE");
-        }
-        if (autoLogin.equals("DEFAULT")) {
-            System.out.println("Auto Login: DEFAULT");
-        }
+
 
         return false;
     }
@@ -241,6 +212,7 @@ public class splash_activity extends Activity implements Animation.AnimationList
 
         if (NAME.isEmpty() || PASS.isEmpty()) {
             error = true;
+            Toast.makeText(getApplicationContext(), "Enter Details", Toast.LENGTH_SHORT).show();
         }
 
         if (error == false) {
@@ -255,7 +227,6 @@ public class splash_activity extends Activity implements Animation.AnimationList
                     if (shared == false) {
                         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPref.edit();
-
                         editor.putString("Name", session.getUser().getUsername());
                         editor.putString("Pass", session.getUser().getPassword());
                         editor.commit();
@@ -284,14 +255,11 @@ public class splash_activity extends Activity implements Animation.AnimationList
     private void moveLogo() {
 
         //Move Logo Up
-
         logoTop.startAnimation(animation);
         logoBottom.startAnimation(animation);
         progBar.startAnimation(animation);
 
-
         //Move Text Edits In
-
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
 
         username.setAnimation(animation);
@@ -304,7 +272,7 @@ public class splash_activity extends Activity implements Animation.AnimationList
         login.setVisibility(View.VISIBLE);
         register.setVisibility(View.VISIBLE);
 
-
+        flicked = true;
     }
 
     private void setupNotificationBar() {
@@ -316,7 +284,7 @@ public class splash_activity extends Activity implements Animation.AnimationList
         }
     }
 
-
+    //Gesture overrides
     @Override
     public void onAnimationStart(Animation animation) {
 
@@ -363,7 +331,6 @@ public class splash_activity extends Activity implements Animation.AnimationList
                             float distanceY) {
         return true;
     }
-
     @Override
     public void onShowPress(MotionEvent event) {
     }

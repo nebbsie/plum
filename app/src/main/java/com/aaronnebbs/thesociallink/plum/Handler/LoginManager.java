@@ -2,11 +2,9 @@ package com.aaronnebbs.thesociallink.plum.Handler;
 
 
 import android.os.AsyncTask;
-import android.support.design.widget.Snackbar;
 
 import com.aaronnebbs.thesociallink.plum.Objects.User;
 import com.aaronnebbs.thesociallink.plum.Utility.Server;
-
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -19,10 +17,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.net.Inet6Address;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
 
 
 public class LoginManager extends AsyncTask {
@@ -51,42 +45,35 @@ public class LoginManager extends AsyncTask {
         String data;
 
         try {
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpGet httpget = new HttpGet(url);
+            httpget.addHeader("accept", "application/json");
+            HttpResponse response;
+            response = httpclient.execute(httpget);
+            HttpEntity entity = response.getEntity();
 
-            boolean exists = false;
+            if (entity != null) {
+                data = EntityUtils.toString(entity, "UTF-8");
+                JSONObject obj = new JSONObject(data);
 
+                String firstname = obj.getString("firstname");
+                String lastname = obj.getString("lastname");
+                String username = obj.getString("username");
+                String password = obj.getString("password");
 
+                String profilepic = obj.getString("profilepic");
+                String lastlogged = obj.getString("lastloggedin");
+                String id = obj.getString("userid");
 
+                System.out.println("Yo: " + firstname);
 
-            if (exists) {
-                System.out.println("Connected To Server");
+                User user;
+                user = new User(id, firstname, lastname, username, password, profilepic, lastlogged);
 
-                HttpClient httpclient = new DefaultHttpClient();
-                HttpGet httpget = new HttpGet(url);
-                httpget.addHeader("accept", "application/json");
-                HttpResponse response;
-                response = httpclient.execute(httpget);
-                HttpEntity entity = response.getEntity();
+                return user;
 
-                if (entity != null) {
-                    data = EntityUtils.toString(entity, "UTF-8");
-                    JSONObject obj = new JSONObject(data);
-
-                    String firstname = obj.getString("firstname");
-                    String lastname = obj.getString("lastname");
-                    String username = obj.getString("username");
-                    String password = obj.getString("password");
-
-                    String profilepic = obj.getString("profilepic");
-                    String lastlogged = obj.getString("lastloggedin");
-                    String id = obj.getString("userid");
-
-                    User user;
-                    user = new User(id, firstname, lastname, username, password, profilepic, lastlogged);
-
-                    return user;
-
-                }
             }
+
 
         } catch (ClientProtocolException e) {
             e.printStackTrace();

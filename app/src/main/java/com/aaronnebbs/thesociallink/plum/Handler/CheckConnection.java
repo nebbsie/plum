@@ -17,12 +17,10 @@ public class CheckConnection extends AsyncTask {
 
         try {
             SocketAddress sockaddr = new InetSocketAddress("81.103.180.97", 8080);
-            // Create an unbound socket
+
             Socket sock = new Socket();
 
-            // This method will block no more than timeoutMs.
-            // If the timeout occurs, SocketTimeoutException is thrown.
-            int timeoutMs = 500;   // 2 seconds
+            int timeoutMs = 2000;   // 2 seconds
             sock.connect(sockaddr, timeoutMs);
             connected = true;
         } catch (Exception e) {
