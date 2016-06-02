@@ -84,6 +84,7 @@
                     android:layout_centerHorizontal="true"
                     android:textColor="@color/app_white"
                     android:layout_marginTop="5dp" />
+
             </RelativeLayout>
 
             <RelativeLayout
@@ -128,7 +129,9 @@
                     android:layout_alignRight="@+id/logoBottom"
                     android:layout_alignEnd="@+id/logoBottom"
                     android:layout_alignLeft="@+id/logoTop"
-                    android:layout_alignStart="@+id/logoTop" />
+                    android:layout_alignStart="@+id/logoTop"
+                    android:progressDrawable="@drawable/circular"/>
+
             </RelativeLayout>
         </RelativeLayout>
     </ScrollView>

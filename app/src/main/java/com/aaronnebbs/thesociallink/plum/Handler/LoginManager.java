@@ -2,6 +2,7 @@ package com.aaronnebbs.thesociallink.plum.Handler;
 
 
 import android.os.AsyncTask;
+import android.support.design.widget.Snackbar;
 
 import com.aaronnebbs.thesociallink.plum.Objects.User;
 import com.aaronnebbs.thesociallink.plum.Utility.Server;
@@ -18,6 +19,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.net.Inet6Address;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
 
 
 public class LoginManager extends AsyncTask {
@@ -27,16 +32,16 @@ public class LoginManager extends AsyncTask {
     private String baseUrl;
     private String url;
 
-    public LoginManager(String username, String password){
+    public LoginManager(String username, String password) {
         this.username = username;
         this.password = password;
 
         baseUrl = Server.url;
-        url =  baseUrl += "/entities.users/login/";
+        url = baseUrl += "/entities.users/login/";
 
-        url+=username;
-        url+="/";
-        url+=password;
+        url += username;
+        url += "/";
+        url += password;
     }
 
     @SuppressWarnings("deprecation")
@@ -45,34 +50,45 @@ public class LoginManager extends AsyncTask {
 
         String data;
 
-        try{
-            HttpClient httpclient = new DefaultHttpClient();
-            HttpGet httpget = new HttpGet(url);
-            httpget.addHeader("accept", "application/json");
-            HttpResponse response;
-            response = httpclient.execute(httpget);
-            HttpEntity entity = response.getEntity();
+        try {
 
-            if(entity != null){
-                data = EntityUtils.toString(entity, "UTF-8");
-                JSONObject obj = new JSONObject(data);
+            boolean exists = false;
 
-                String firstname = obj.getString("firstname");
-                String lastname = obj.getString("lastname");
-                String username = obj.getString("username");
-                String password = obj.getString("password");
 
-                String profilepic = obj.getString("profilepic");
-                String lastlogged  = obj.getString("lastloggedin");
-                String id = obj.getString("userid");
 
-                User user;
-                user = new User(id, firstname, lastname, username, password, profilepic, lastlogged);
 
-                return user;
+            if (exists) {
+                System.out.println("Connected To Server");
+
+                HttpClient httpclient = new DefaultHttpClient();
+                HttpGet httpget = new HttpGet(url);
+                httpget.addHeader("accept", "application/json");
+                HttpResponse response;
+                response = httpclient.execute(httpget);
+                HttpEntity entity = response.getEntity();
+
+                if (entity != null) {
+                    data = EntityUtils.toString(entity, "UTF-8");
+                    JSONObject obj = new JSONObject(data);
+
+                    String firstname = obj.getString("firstname");
+                    String lastname = obj.getString("lastname");
+                    String username = obj.getString("username");
+                    String password = obj.getString("password");
+
+                    String profilepic = obj.getString("profilepic");
+                    String lastlogged = obj.getString("lastloggedin");
+                    String id = obj.getString("userid");
+
+                    User user;
+                    user = new User(id, firstname, lastname, username, password, profilepic, lastlogged);
+
+                    return user;
+
+                }
             }
 
-        }catch (ClientProtocolException e) {
+        } catch (ClientProtocolException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
