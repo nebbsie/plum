@@ -40,7 +40,7 @@
         jar="C:\Users\Aaron\Desktop\plum\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         revision="23.0.3"
-        sha1="ff746016cbab332eed697d04c19b5a5981a3d7f8">
+        sha1="fd7dfb74ef84b9eba845ef36fe512e10510f6fc3">
         <dex dex="C:\Users\Aaron\Desktop\plum\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_b1a60c9edce3f0773908bbba12614641e444b06c\classes.dex" />
     </item>
     <item
@@ -61,7 +61,7 @@
         jar="C:\Users\Aaron\Desktop\plum\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         revision="23.0.3"
-        sha1="214d7f2734a628196a1509035a7a0ed70a3036e5">
+        sha1="5a2f75fa2240d2b4b1abb80b910f15c761e462df">
         <dex dex="C:\Users\Aaron\Desktop\plum\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_3f65e09f3f61783e5b3a4ec4f861a9d73606beaa\classes.dex" />
     </item>
     <item

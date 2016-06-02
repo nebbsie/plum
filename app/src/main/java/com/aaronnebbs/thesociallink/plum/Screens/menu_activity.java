@@ -57,6 +57,9 @@ public class menu_activity extends Activity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(),"Tabs", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent();
+                i.setClass(getApplicationContext(),tabs_activity.class );
+                startActivity(i);
             }
         });
 
@@ -70,6 +73,7 @@ public class menu_activity extends Activity {
                 startActivity(i);
             }
         });
+
 
     }
 

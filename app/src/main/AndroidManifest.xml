@@ -26,7 +26,7 @@
         <activity android:name=".plum.Screens.profile_activity" />
         <activity android:name=".plum.Screens.register_activity" />
         <activity
-            android:name=".tabs_activity"
+            android:name=".plum.Screens.tabs_activity"
             android:label="@string/title_activity_tabs_activity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
