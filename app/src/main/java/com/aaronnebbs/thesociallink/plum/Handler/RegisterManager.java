@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.Date;
 
 public class RegisterManager extends AsyncTask {
         private String username;
@@ -43,6 +44,18 @@ public class RegisterManager extends AsyncTask {
                 data.put("firstname", firstname);
                 data.put("lastname", lastname);
                 data.put("profilepic", "default");
+
+                String logged = "";
+                Date date = new Date();
+                java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+                java.sql.Time sqlTime = new java.sql.Time(date.getTime());
+
+                logged += sqlDate;
+                logged += "T";
+                logged += sqlTime;
+
+                data.put("lastloggedin", logged);
+
 
                 HttpClient httpclient = new DefaultHttpClient();
                 HttpPost request = new HttpPost(url);

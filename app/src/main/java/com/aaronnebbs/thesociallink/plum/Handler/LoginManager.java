@@ -65,13 +65,11 @@ public class LoginManager extends AsyncTask {
                 String lastlogged = obj.getString("lastloggedin");
                 String id = obj.getString("userid");
 
-                System.out.println("Yo: " + firstname);
 
                 User user;
                 user = new User(id, firstname, lastname, username, password, profilepic, lastlogged);
 
                 return user;
-
             }
 
 

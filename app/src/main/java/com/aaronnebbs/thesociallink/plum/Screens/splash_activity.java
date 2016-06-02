@@ -98,6 +98,9 @@ public class splash_activity extends Activity implements Animation.AnimationList
         setupOnClickListeners();
         shouldRunKeyboardListener();
         checkIfFromRegister();
+
+
+
     }
 
     private void shouldRunKeyboardListener(){
