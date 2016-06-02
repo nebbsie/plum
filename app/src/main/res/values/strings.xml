@@ -5,4 +5,5 @@
     <string name="savedUsername"></string>
     <string name="defualtUsername">DEFAULT</string>
     <string name="savedPassword"></string>
+    <string name="title_activity_tabs_activity">tabs_activity</string>
 </resources>

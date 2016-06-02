@@ -2,76 +2,6 @@
 <items version="2" >
 
     <item
-<<<<<<< HEAD
-        jar="/home/aaron/Documents/plum/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.3.0/jars/libs/internal_impl-23.3.0.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="4da5a4d697d32497c6f85567a5112e62fdfd0676">
-        <dex dex="/home/aaron/Documents/plum/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.3.0_3920ca089b294e70756326fa844e87841acff9b1/classes.dex" />
-    </item>
-    <item
-        jar="/home/aaron/Documents/plum/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="577a244ab9e7df1c2ffeac8dc0cef6e59d540858">
-        <dex dex="/home/aaron/Documents/plum/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_51dede3b14a74055360330c3344565f3280d49a3/classes.dex" />
-    </item>
-    <item
-        jar="/home/aaron/Documents/plum/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="42594459efd69d461394bf66ee6a10cda1559022">
-        <dex dex="/home/aaron/Documents/plum/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_f81273dc80c3146519ff817a25f7c3c4f9b1f92c/classes.dex" />
-    </item>
-    <item
-        jar="/home/aaron/Documents/plum/app/build/intermediates/exploded-aar/com.android.support/design/23.2.1/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="72961d8b453b46e277702f18de9d210bc019e36e">
-        <dex dex="/home/aaron/Documents/plum/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-23.2.1_ffef77a1bf6b423cd25e00446ae2c4df08d34ff0/classes.dex" />
-    </item>
-    <item
-        jar="/home/aaron/Documents/plum/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.3.0/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="8a034dd16c0dfd75fe86c52c2cd581592acc684a">
-        <dex dex="/home/aaron/Documents/plum/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-23.3.0_7c71eaac652df4c8492f07483b5cd1ad993b9c69/classes.dex" />
-    </item>
-    <item
-        jar="/home/aaron/Documents/plum/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.3.0/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="23be6993826b8fd88bbc8d14928bb3b8960d3d4e">
-        <dex dex="/home/aaron/Documents/plum/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-23.3.0_e75b77d81623631f70f00e644b7851d243abaaae/classes.dex" />
-    </item>
-    <item
-        jar="/home/aaron/Documents/plum/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
-        <dex dex="/home/aaron/Documents/plum/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-23.3.0_2263cbb48337f0f651dc00a11c2d412bbf099044/classes.dex" />
-    </item>
-    <item
-        jar="/home/aaron/Documents/plum/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.3.0/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="a0b5d60246cd9d4f3f2443611b3b4c25265840b5">
-        <dex dex="/home/aaron/Documents/plum/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-23.3.0_1f43b7d0f1369e8bfde2cb9671f2fa78e39f15b2/classes.dex" />
-    </item>
-    <item
-        jar="/home/aaron/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/23.3.0/support-annotations-23.3.0.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
-        <dex dex="/home/aaron/Documents/plum/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.3.0_0676a06c3fbbd804e76bab10f592e53a94faabc2/classes.dex" />
-    </item>
-    <item
-        jar="/home/aaron/Documents/plum/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.2.1/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="e3885783ff8926ed9e2fdcd16816c2e1e73e7aee">
-        <dex dex="/home/aaron/Documents/plum/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-23.2.1_1387efa35fc11d0df1cf7abdd3eb5a1beb254d32/classes.dex" />
-=======
         jar="C:\Users\Aaron\Desktop\plum\app\build\intermediates\exploded-aar\com.android.support\design\23.2.1\jars\classes.jar"
         jumboMode="true"
         revision="23.0.3"
@@ -110,7 +40,7 @@
         jar="C:\Users\Aaron\Desktop\plum\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         revision="23.0.3"
-        sha1="8e406f9da0e9b27ff0b0e9101c462fb9eef70949">
+        sha1="fd7dfb74ef84b9eba845ef36fe512e10510f6fc3">
         <dex dex="C:\Users\Aaron\Desktop\plum\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_b1a60c9edce3f0773908bbba12614641e444b06c\classes.dex" />
     </item>
     <item
@@ -131,7 +61,7 @@
         jar="C:\Users\Aaron\Desktop\plum\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         revision="23.0.3"
-        sha1="16370fa6d64d8c75c25e3002c7491a43c00a91bf">
+        sha1="5a2f75fa2240d2b4b1abb80b910f15c761e462df">
         <dex dex="C:\Users\Aaron\Desktop\plum\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_3f65e09f3f61783e5b3a4ec4f861a9d73606beaa\classes.dex" />
     </item>
     <item
@@ -140,7 +70,6 @@
         revision="23.0.3"
         sha1="e3885783ff8926ed9e2fdcd16816c2e1e73e7aee">
         <dex dex="C:\Users\Aaron\Desktop\plum\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-23.2.1_b536ea475e62aca60f93d76967fd95afd085c910\classes.dex" />
->>>>>>> c5a15345b0be43f66118ccbda4c74a3e7c3ad93a
     </item>
 
 </items>

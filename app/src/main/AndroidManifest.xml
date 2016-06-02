@@ -14,9 +14,7 @@
         <uses-permission android:name="android.permission.INTERNET" />
         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-        <activity
-            android:name=".plum.Screens.splash_activity"
-            >
+        <activity android:name=".plum.Screens.splash_activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,7 +24,11 @@
         <activity android:name=".plum.Screens.menu_activity" />
         <activity android:name=".plum.Screens.settings_activity" />
         <activity android:name=".plum.Screens.profile_activity" />
-        <activity android:name=".plum.Screens.register_activity"></activity>
+        <activity android:name=".plum.Screens.register_activity" />
+        <activity
+            android:name=".plum.Screens.tabs_activity"
+            android:label="@string/title_activity_tabs_activity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

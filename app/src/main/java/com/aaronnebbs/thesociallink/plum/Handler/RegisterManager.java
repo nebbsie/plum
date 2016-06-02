@@ -2,6 +2,8 @@ package com.aaronnebbs.thesociallink.plum.Handler;
 
 import android.os.AsyncTask;
 
+import com.aaronnebbs.thesociallink.plum.Utility.Server;
+
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -17,14 +19,18 @@ public class RegisterManager extends AsyncTask {
         private String password;
         private String firstname;
         private String lastname;
-
-        private String url = "http://81.103.180.97:8080/plumService2/webresources/entities.users";
+        private String baseUrl;
+        private String url;
 
         public RegisterManager(String username , String password){
             this.username = username;
             this.password = password;
             this.firstname = "default";
             this.lastname = "default";
+
+            baseUrl = Server.url;
+            url = baseUrl += "/entities.users";
+
         }
 
 

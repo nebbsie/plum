@@ -24,12 +24,15 @@ public class LoginManager extends AsyncTask {
 
     private String username;
     private String password;
-    private String baseUrl = Server.url;
-    private String url =  baseUrl += "/entities.users/login/";
+    private String baseUrl;
+    private String url;
 
     public LoginManager(String username, String password){
         this.username = username;
         this.password = password;
+
+        baseUrl = Server.url;
+        url =  baseUrl += "/entities.users/login/";
 
         url+=username;
         url+="/";
