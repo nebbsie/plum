@@ -15,6 +15,6 @@ Depending on the situation you are in can decide the amount of information you w
 
 
 
+![alt text](https://github.com/nebbsie/plum/blob/master/img2.png)
+![alt text](https://github.com/nebbsie/plum/blob/master/img1.png)
 
-![alt text](http://plumapp.co.uk/github/img1.png "Login Screen")
-![alt text](http://plumapp.co.uk/github/img2.png "Login Screen")
